@@ -9,7 +9,7 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = ['weibo',]
+BOT_NAME = ['weibo']
 
 SPIDER_MODULES = ['Weibo.spiders']
 NEWSPIDER_MODULE = 'Weibo.spiders'

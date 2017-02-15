@@ -14,10 +14,15 @@ class Spider(Spider):
     tweets_collection = weibo_db.Tweets
     start_urls_dict = userid_collection.find({},{'_id':1})
     start_urls = list(set([i['_id'] for i in start_urls_dict]))
+    remain_num = len(start_urls)
 
     def start_requests(self):
         for uid in self.start_urls:
             yield Request(url='http://weibo.cn/{0}/profile?filter=1&page=1'.format(uid), callback=self.parse_tweets)
+            self.remain_num -= 1
+            print('-----------------------------------------------------')
+            print('剩余'+str(self.remain_num)+'微博用户')
+            print('-----------------------------------------------------')
 
     def parse_tweets(self,response):
         flag = True
@@ -56,6 +61,9 @@ class Spider(Spider):
                             if len(others) == 2:
                                  tweetsItems['Tools'] = others[1]
                             yield tweetsItems
+                        else:
+                            flag = False
+                            break
                     else:
                          flag = False
                          break

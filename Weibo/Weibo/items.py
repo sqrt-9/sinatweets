@@ -21,15 +21,3 @@ class InformationItem(Item):
     Num_Fans = Field()  # 粉丝数
     URL = Field()  # 首页链接
 
-
-class TweetsItem(Item):
-    """微博信息"""
-    _id = Field()  # 用户ID-微博ID
-    ID = Field()  # 用户ID
-    Content = Field()  # 微博内容
-    PubTime = Field()  # 发表时间
-    Tools = Field()  # 发表工具/平台
-    Like = Field()  # 点赞数
-    Comment = Field()  # 评论数
-    Transfer = Field()  # 转载数
-
